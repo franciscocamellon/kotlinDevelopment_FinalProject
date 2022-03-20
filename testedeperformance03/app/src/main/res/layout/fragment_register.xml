@@ -22,6 +22,7 @@
             android:id="@+id/imageView2"
             android:layout_width="130dp"
             android:layout_height="130dp"
+            android:layout_marginTop="50dp"
             android:contentDescription="@string/all"
             app:srcCompat="@drawable/ic_infnet_esti_logo"
             tools:ignore="VectorDrawableCompat" />

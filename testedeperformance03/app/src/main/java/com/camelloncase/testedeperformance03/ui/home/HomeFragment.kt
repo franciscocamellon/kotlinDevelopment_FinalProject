@@ -1,13 +1,12 @@
 package com.camelloncase.testedeperformance03.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.camelloncase.testedeperformance03.R
 import com.camelloncase.testedeperformance03.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -18,6 +17,11 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,7 +29,7 @@ class HomeFragment : Fragment() {
     ): View {
 
         val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+            ViewModelProvider(this)[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -35,6 +39,10 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.app_menu, menu)
     }
 
     override fun onDestroyView() {
